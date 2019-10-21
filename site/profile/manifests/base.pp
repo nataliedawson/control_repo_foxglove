@@ -3,4 +3,9 @@ class profile::base {
     ensure => present,
   }
   include profile::ssh_server
+  
+  # ensure that htop has been installed
+  package {'htop':
+    ensure => running,
+  }
 }
