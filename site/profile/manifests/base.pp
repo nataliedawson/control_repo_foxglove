@@ -6,6 +6,6 @@ class profile::base {
   
   # ensure that htop has been installed
   package {'htop':
-    ensure => running,
+    ensure => installed,
   }
 }
