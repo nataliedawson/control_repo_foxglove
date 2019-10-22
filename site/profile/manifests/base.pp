@@ -8,7 +8,6 @@ class profile::base {
   yumrepo {'epel-release':
     enabled => 1,
     baseurl => 'https://dl.fedoraproject.org/pub/epel/7/x86_64',
-    name    => 'epel-release-latest-7.noarch.rpm',
     descr   => 'Extra Packages for Enterprise Linux repository configuration',
   }
 }
