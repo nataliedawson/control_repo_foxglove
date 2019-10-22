@@ -3,6 +3,4 @@ class profile::base {
     ensure => present,
   }
   include profile::ssh_server
-  
-  include yum
 }
