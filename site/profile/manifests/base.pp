@@ -10,4 +10,9 @@ class profile::base {
     baseurl => 'https://dl.fedoraproject.org/pub/epel/7/x86_64',
     descr   => 'Extra Packages for Enterprise Linux repository configuration',
   }
+  
+  package {'htop':
+    ensure   => 'installed',
+    provider => 'yum',
+  }
 }
