@@ -9,6 +9,7 @@ class profile::base {
     enabled => 1,
     baseurl => 'https://dl.fedoraproject.org/pub/epel/7/x86_64',
     descr   => 'Extra Packages for Enterprise Linux repository configuration',
+    gpgcheck => 1,
   }
   
   package {'htop':
