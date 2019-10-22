@@ -4,6 +4,12 @@ class profile::base {
   }
   include profile::ssh_server
   
+  # check for yum update
+  class {'yum_cron':
+    ensure        => 'present',
+    apply_updates => true,    
+  }
+  
   # include epel-release repo to get access to htop package
   yumrepo {'epel-release':
     enabled  => 1,
