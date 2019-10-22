@@ -4,8 +4,5 @@ class profile::base {
   }
   include profile::ssh_server
   
-  # ensure that htop has been installed
-  package {'htop':
-    ensure => installed,
-  }
+  include yum
 }
