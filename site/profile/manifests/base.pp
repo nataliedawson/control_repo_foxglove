@@ -13,6 +13,7 @@ class profile::base {
     gpgkey   => 'https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7'
   }
   
+  # install the htop package
   package {'htop':
     ensure   => 'installed',
     provider => 'yum',
