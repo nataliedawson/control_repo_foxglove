@@ -20,3 +20,7 @@ node /^web/ {
 node /^db/ {
   include role::db_server
 }
+
+node 'foxglove.cs.ucl.ac.uk'/ {
+  include role::foxglove_server
+}
