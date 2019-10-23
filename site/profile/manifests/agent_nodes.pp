@@ -10,4 +10,8 @@ class profile::agent_nodes {
     ensure => present,
     ip     => '172.18.0.2',
   }
+  # add details for foxglove
+  host {'foxglove.cs.ucl.ac.uk':
+    ensure => present,
+    ip     => '128.16.5.105',
 }
