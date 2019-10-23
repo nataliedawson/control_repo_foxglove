@@ -21,6 +21,6 @@ node /^db/ {
   include role::db_server
 }
 
-node 'foxglove.cs.ucl.ac.uk'/ {
+node /^foxglove/ {
   include role::foxglove_server
 }
