@@ -1,7 +1,7 @@
 class profile::base {
-  user {'admin':
-    ensure => present,
-  }
+  #user {'admin':
+  #  ensure => present,
+  #}
   include profile::ssh_server
   
   # perform yum clean and update with cron
