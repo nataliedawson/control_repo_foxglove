@@ -25,13 +25,6 @@ class profile::base {
     user    => 'root',
   }
   
-  # include applydeltarpm package (other yum complains when installing htop/ntp)
-  #package {'deltarpm':
-  #  ensure   => 'installed',
-  #  provider => 'yum',
-  #  require  => [Exec['exec-yum-clean']],
-  #}
-  
   # include epel-release repo to get access to htop package
   yumrepo {'epel-release':
     enabled  => 1,
@@ -48,4 +41,18 @@ class profile::base {
     provider => 'yum',
     require  => [Exec['exec-yum-clean']],
   }
+  
+  # incorporate own firewall rules
+  resources {'firewall':
+    purge => true,
+  }
+  
+  Firewall {
+     before  => Class['my_firewall::post'],
+     require => Class['my_firewall::pre'],
+   }
+
+   class { ['my_firewall::pre', 'my_firewall::post']: }
+   
+   class {'firewall':}
 }
