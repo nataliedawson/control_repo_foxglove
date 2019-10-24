@@ -42,17 +42,5 @@ class profile::base {
     require  => [Exec['exec-yum-clean']],
   }
   
-  # incorporate own firewall rules
-  resources {'firewall':
-    purge => true,
-  }
-  
-  Firewall {
-     before  => Class['my_firewall::post'],
-     require => Class['my_firewall::pre'],
-   }
 
-   class { ['my_firewall::pre', 'my_firewall::post']: }
-   
-   class {'firewall':}
 }
