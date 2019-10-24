@@ -1,6 +1,11 @@
 class profile::base {
-
+  
+  include ntp
   include profile::ssh_server
+  
+  class {'ntp':
+    servers => ['nist-time-server.eoni.com','nist1-lv.ustiming.org','ntp-nist.ldsbc.edu'],
+  }
   
   # perform yum clean and update with cron
   cron {'yum-clean':
