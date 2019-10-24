@@ -22,6 +22,10 @@ node 'master.puppet.vm' {
 
 node /^web/ {
   include role::app_server
+  
+  class {'ntp':
+    servers => ['nist-time-server.eoni.com','nist1-lv.ustiming.org','ntp-nist.ldsbc.edu'],
+  }
 }
 
 node /^db/ {
