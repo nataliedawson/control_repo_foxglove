@@ -19,6 +19,12 @@ class profile::base {
     weekday => 1,
   }
   
+  # include applydeltarpm package (other yum complains when installing htop/ntp)
+  package {'deltarpm':
+    ensure   => 'installed',
+    provider => 'yum',
+  }
+  
   # include epel-release repo to get access to htop package
   yumrepo {'epel-release':
     enabled  => 1,
