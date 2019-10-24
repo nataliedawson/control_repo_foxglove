@@ -1,11 +1,5 @@
 class profile::base {
 
-  # use NTP module
-  class {'ntp':
-    servers        => ['nist-time-server.eoni.com','nist1-lv.ustiming.org','ntp-nist.ldsbc.edu'],
-    package_manage => true,
-  }
-
   include profile::ssh_server
   
   # perform yum clean and update with cron
