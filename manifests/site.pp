@@ -21,9 +21,9 @@ node 'master.puppet.vm' {
 }
 
 node /^web/ {
-  #class {'ntp':
-  #  servers => ['master.puppet.vm'],
-  #}
+  class {'ntp':
+    servers => ['master.puppet.vm'],
+  }
   
   include role::app_server
   
