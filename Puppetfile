@@ -4,3 +4,5 @@ mod 'puppetlabs/concat'
 mod 'puppetlabs/translate'
 mod 'samuelson/dockeragent'
 mod 'puppetlabs/docker'
+# ensure NTP is used to synchronise times across all nodes
+mod 'puppetlabs-ntp'
