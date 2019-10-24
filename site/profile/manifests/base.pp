@@ -1,5 +1,8 @@
 class profile::base {
 
+  # use NTP module
+  include profile::ntp
+
   include profile::ssh_server
   
   # perform yum clean and update with cron
