@@ -1,11 +1,5 @@
 node default {
-
-  include ntp
-  
-  class {'ntp':
-    servers => ['nist-time-server.eoni.com','nist1-lv.ustiming.org','ntp-nist.ldsbc.edu'],
-  }
-  
+ 
   file {'/root/README':
     ensure  => file,
     content => 'This is a readme generated for a default node',
@@ -20,18 +14,10 @@ node 'master.puppet.vm' {
     ensure => file,
     content => "Welcome to ${fqdn}\n",
   }
-  
-  class {'ntp':
-    servers => ['nist-time-server.eoni.com','nist1-lv.ustiming.org','ntp-nist.ldsbc.edu'],
-  }
 }
 
 node /^web/ {
   include role::app_server
-  
-  class {'ntp':
-    servers => ['nist-time-server.eoni.com','nist1-lv.ustiming.org','ntp-nist.ldsbc.edu'],
-  }
   
   file {'/root/README':
     ensure => file,
