@@ -19,11 +19,18 @@ class profile::base {
     weekday => 1,
   }
   
-  # include applydeltarpm package (other yum complains when installing htop/ntp)
-  package {'deltarpm':
-    ensure   => 'installed',
-    provider => 'yum',
+  # command to perform yum clean
+  exec {'exec-yum-clean':
+    command => '/bin/yum -y -q clean all',
+    user    => 'root',
   }
+  
+  # include applydeltarpm package (other yum complains when installing htop/ntp)
+  #package {'deltarpm':
+  #  ensure   => 'installed',
+  #  provider => 'yum',
+  #  require  => [Exec['exec-yum-clean']],
+  #}
   
   # include epel-release repo to get access to htop package
   yumrepo {'epel-release':
@@ -31,12 +38,14 @@ class profile::base {
     baseurl  => 'https://dl.fedoraproject.org/pub/epel/7/x86_64',
     descr    => 'Extra Packages for Enterprise Linux repository configuration',
     gpgcheck => 1,
-    gpgkey   => 'https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7'
+    gpgkey   => 'https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7',
+    require  => [Exec['exec-yum-clean']],
   }
   
   # install the htop package
   package {'htop':
     ensure   => 'installed',
     provider => 'yum',
+    require  => [Exec['exec-yum-clean']],
   }
 }
