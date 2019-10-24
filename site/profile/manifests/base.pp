@@ -1,6 +1,6 @@
 class profile::base {
   
-  include ntp
+  #include ntp
   include profile::ssh_server
   
   class {'ntp':
