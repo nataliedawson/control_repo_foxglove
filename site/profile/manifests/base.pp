@@ -1,7 +1,7 @@
 class profile::base {
 
   # use NTP module
-  include profile::ntp
+  include ntp
 
   include profile::ssh_server
   
