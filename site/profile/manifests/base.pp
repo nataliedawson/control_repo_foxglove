@@ -42,5 +42,11 @@ class profile::base {
     require  => [Exec['exec-yum-clean']],
   }
   
+  # install lsof package to investigate ports
+  package {'lsof':
+    ensure   => 'installed',
+    provider => 'yum',
+    require  => [Exec['exec-yum-clean']],
+  } 
 
 }
