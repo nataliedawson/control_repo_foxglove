@@ -1,7 +1,5 @@
 class profile::base {
   
-  include profile::ssh_server
-  
   # perform yum clean and update with cron
   cron {'yum-clean':
     command => '/bin/yum -y -q clean all',
