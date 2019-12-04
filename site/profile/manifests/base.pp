@@ -46,5 +46,8 @@ class profile::base {
     provider => 'yum',
     require  => [Exec['exec-yum-clean']],
   } 
+  
+  # include orengoapps
+  include orengoapps
 
 }
