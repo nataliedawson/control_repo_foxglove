@@ -6,6 +6,11 @@
 #   include orengoapps::install
 class orengoapps::install {
 
+    # include cpan class
+    # from puppet forge
+    # to install perl modules
+    include '::cpan'
+
     # move to global config?
 
     $mafft_rpm_filename = 'mafft-7.427-gcc_fc6.x86_64.rpm'
@@ -58,6 +63,12 @@ class orengoapps::install {
     }
 
     # blast
+    cpan { "List::MoreUtils":
+      ensure  => present,
+      require => Class['::cpan'],
+      force   => true,
+    }
+    ->
     package { 'perl-Archive-Tar':
         ensure => 'latest',
     }
