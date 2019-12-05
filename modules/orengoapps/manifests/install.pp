@@ -9,7 +9,7 @@ class orengoapps::install {
     # include cpan class
     # from puppet forge
     # to install perl modules
-    include '::cpan'
+    #include '::cpan'
 
     # move to global config?
 
@@ -30,6 +30,7 @@ class orengoapps::install {
         'cath-ssap',
         'cath-superpose',
     ]
+    $sam_dir = 'sam'
 
 
     # clustalw2
@@ -63,12 +64,12 @@ class orengoapps::install {
     }
 
     # blast
-    cpan { "List::MoreUtils":
-      ensure  => present,
-      require => Class['::cpan'],
-      force   => true,
-    }
-    ->
+    #cpan { "List::MoreUtils":
+    #  ensure  => present,
+    #  require => Class['::cpan'],
+    #  force   => true,
+    #}
+    #->
     package { 'perl-Archive-Tar':
         ensure => 'latest',
     }
@@ -113,6 +114,15 @@ class orengoapps::install {
             group => 'root',
             mode => '0755',
         }
+    }
+    
+    # sam
+    file { '/usr/bin/sam':
+        source => "/opt/apps/${sam_dir}",
+        ensure => 'directory',
+        owner => 'root',
+        group => 'root',
+        mode => '0755',
     }
     
 }
