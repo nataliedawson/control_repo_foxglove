@@ -118,7 +118,7 @@ class orengoapps::install {
     
     # sam
     file { "/usr/bin/${prettyalign_file}":
-        source => "puppet:///modules/orengoapps/${prettyalign_file}",
+        source => "puppet:///modules/orengoapps/sam/bin${prettyalign_file}",
         ensure => 'present',
         owner => 'root',
         group => 'root',
