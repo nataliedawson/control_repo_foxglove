@@ -115,7 +115,7 @@ class orengoapps::install {
     }
     
     # sam
-    file { "/usr/bin":
+    file { "/usr/local/bin":
         source => "puppet:///modules/orengoapps/${sam_dir}/bin",
         ensure => 'directory',
         recurse => true,
