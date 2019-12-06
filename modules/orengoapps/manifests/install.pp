@@ -30,7 +30,7 @@ class orengoapps::install {
         'cath-ssap',
         'cath-superpose',
     ]
-    $prettyalign_file = 'prettyalign'
+    $sam_dir = 'sam'
 
 
     # clustalw2
@@ -115,12 +115,12 @@ class orengoapps::install {
     }
     
     # sam
-    file { "/usr/bin/${prettyalign_file}":
-        source => "puppet:///modules/orengoapps/sam/bin/${prettyalign_file}",
-        ensure => 'present',
+    file { "/usr/bin":
+        source => "puppet:///modules/orengoapps/${sam_dir}/bin",
+        ensure => 'directory',
+        recurse => true,
         owner => 'root',
-        group => 'root',
-        mode => '0755',
+        purge => false,
     }
     
 }
