@@ -122,6 +122,13 @@ class orengoapps::install {
         owner => 'root',
         purge => false,
     }
-    
+    ->
+    file { "/usr/local/lib":
+        source => "puppet:///modules/orengoapps/${sam_dir}/lib",
+        ensure => 'directory',
+        recurse => true
+        owner => 'root',
+        purge => false,
+    }
 }
 
