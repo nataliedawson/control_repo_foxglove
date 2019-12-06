@@ -64,13 +64,11 @@ class orengoapps::install {
     }
 
     # blast
-    #cpan { "List::MoreUtils":
-    #  ensure  => present,
-    #  require => Class['::cpan'],
-    #  force   => true,
-    #}
-    #->
     package { 'perl-Archive-Tar':
+        ensure => 'latest',
+    }
+    ->
+    package { 'perl-List-MoreUtils':
         ensure => 'latest',
     }
     ->
