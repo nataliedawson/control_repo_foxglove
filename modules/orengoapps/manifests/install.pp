@@ -121,7 +121,7 @@ class orengoapps::install {
         ensure => 'directory',
         recurse => true,
         owner => 'root',
-        purge => false,
+        purge => true,
         mode => '0755',
     }
     
@@ -131,7 +131,7 @@ class orengoapps::install {
         ensure => 'directory',
         recurse => true,
         owner => 'root',
-        purge => false,
+        purge => true,
         mode => '0755',
     }
 }
