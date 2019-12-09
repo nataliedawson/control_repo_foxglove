@@ -32,6 +32,7 @@ class orengoapps::install {
     ]
     $sam_dir = 'sam'
     $prc_dir = 'prc'
+    $hmmcalibrate_filename = 'hmmcalibrate'
 
 
     # clustalw2
@@ -132,6 +133,15 @@ class orengoapps::install {
         recurse => true,
         owner => 'root',
         purge => true,
+        mode => '0755',
+    }
+    
+    # hmmcalibrate
+    file { '/usr/bin/${hmmcalibrate_filename}':
+        source => "puppet:///modules/orengoapps/${hmmcalibrate_filename}",
+        ensure => 'file',
+        owner => 'root',
+        group => 'root',
         mode => '0755',
     }
 }
