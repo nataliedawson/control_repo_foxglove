@@ -117,20 +117,12 @@ class orengoapps::install {
     
     # sam
     file { "/usr/local/bin/${sam_dir}":
-        source => "puppet:///modules/orengoapps/${sam_dir}/bin",
+        source => "puppet:///modules/orengoapps/${sam_dir}",
         ensure => 'directory',
         recurse => true,
         owner => 'root',
         purge => false,
         mode => '0755',
-    }
-    ->
-    file { "/usr/local/lib/${sam_dir}":
-        source => "puppet:///modules/orengoapps/${sam_dir}/lib",
-        ensure => 'directory',
-        recurse => true,
-        owner => 'root',
-        purge => false,
     }
     
     # prc
