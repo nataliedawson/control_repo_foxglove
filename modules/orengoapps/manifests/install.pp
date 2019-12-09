@@ -31,6 +31,7 @@ class orengoapps::install {
         'cath-superpose',
     ]
     $sam_dir = 'sam'
+    $prc_dir = 'prc'
 
 
     # clustalw2
@@ -131,5 +132,14 @@ class orengoapps::install {
         owner => 'root',
         purge => false,
     }
+    
+    # prc
+    file { "/usr/local/bin":
+        source => "puppet:///modules/orengoapps/${prc_dir}",
+        ensure => 'directory',
+        recurse => true,
+        owner => 'root',
+        purge => false,
+        mode => '0755',
 }
 
