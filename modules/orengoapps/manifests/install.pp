@@ -141,5 +141,6 @@ class orengoapps::install {
         owner => 'root',
         purge => false,
         mode => '0755',
+    }
 }
 
