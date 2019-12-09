@@ -116,7 +116,7 @@ class orengoapps::install {
     }
     
     # sam
-    file { "/usr/local/bin":
+    file { "/usr/local/bin/${sam_dir}":
         source => "puppet:///modules/orengoapps/${sam_dir}/bin",
         ensure => 'directory',
         recurse => true,
@@ -125,7 +125,7 @@ class orengoapps::install {
         mode => '0755',
     }
     ->
-    file { "/usr/local/lib":
+    file { "/usr/local/lib/${sam_dir}":
         source => "puppet:///modules/orengoapps/${sam_dir}/lib",
         ensure => 'directory',
         recurse => true,
@@ -134,7 +134,7 @@ class orengoapps::install {
     }
     
     # prc
-    file { "/usr/local/bin":
+    file { "/usr/local/bin/${prc_dir}":
         source => "puppet:///modules/orengoapps/${prc_dir}",
         ensure => 'directory',
         recurse => true,
