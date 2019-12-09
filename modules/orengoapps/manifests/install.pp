@@ -121,6 +121,7 @@ class orengoapps::install {
         recurse => true,
         owner => 'root',
         purge => false,
+        mode => '0755',
     }
     ->
     file { "/usr/local/lib":
