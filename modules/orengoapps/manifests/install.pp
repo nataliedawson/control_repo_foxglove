@@ -137,7 +137,7 @@ class orengoapps::install {
     }
     
     # hmmcalibrate
-    file { '/usr/local/bin/${hmmcalibrate_filename}':
+    file { "/usr/local/bin/${hmmcalibrate_filename}":
         source => "puppet:///modules/orengoapps/${hmmcalibrate_filename}",
         ensure => 'file',
         owner => 'root',
