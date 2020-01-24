@@ -84,3 +84,5 @@ PATH=/opt/puppetlabs/puppet/bin:$PATH
 r10k deploy environment -p
 puppet agent -t
 ```
+
+* Have added in `orengoapps` module to install extra programs that will be needed
