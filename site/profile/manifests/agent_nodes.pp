@@ -5,17 +5,23 @@ class profile::agent_nodes {
   }
   
   # check that the expected directory structures are in place
-  # for the webservices jobs
+  # for the webservices jobs (with same owner/group as phoenix)
   file {'/grid/gridstore2/cathgrid/nr':
     ensure => directory,
+    owner => 'cathgrid',
+    group => 'users',
   }
   
   file {'/grid/gridstore2/cathgrid/WebServices':
     ensure => directory,
+    owner => 'cathgrid',
+    group => 'users',
   }
   
   file {'/grid/gridstore2/cathgrid/WebServicesArchive':
     ensure => directory,
+    owner => 'apache',
+    group => 'apache',
   }
   
   file {'/grid/gridstore2/cathgrid/WebServicesTemp':
