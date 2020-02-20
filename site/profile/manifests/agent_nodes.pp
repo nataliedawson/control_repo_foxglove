@@ -20,6 +20,8 @@ class profile::agent_nodes {
   
   file {'/grid/gridstore2/cathgrid/WebServicesTemp':
     ensure => directory,
+    owner => 'apache',
+    group => 'apache',
   }
   
   # check that the expected directory structure is in place
