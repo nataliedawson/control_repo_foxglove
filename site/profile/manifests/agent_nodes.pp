@@ -8,14 +8,14 @@ class profile::agent_nodes {
   # for the webservices jobs (with same owner/group as phoenix)
   file {'/grid/gridstore2/cathgrid/nr':
     ensure => directory,
-    owner => 'cathgrid',
-    group => 'users',
+    #owner => 'cathgrid',
+    #group => 'users',
   }
   
   file {'/grid/gridstore2/cathgrid/WebServices':
     ensure => directory,
-    owner => 'cathgrid',
-    group => 'users',
+    #owner => 'cathgrid',
+    #group => 'users',
   }
   
   file {'/grid/gridstore2/cathgrid/WebServicesArchive':
