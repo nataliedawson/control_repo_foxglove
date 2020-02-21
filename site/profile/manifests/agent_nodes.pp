@@ -30,6 +30,13 @@ class profile::agent_nodes {
     group => 'apache',
   }
   
+  # ensure that there are symlinks in place for the nr files
+  file {'/grid/gridstore2/cathgrid/nr/':
+    ensure => 'link',
+    target => '/external/smb/vm/foxglove_data1/nr/',
+    
+  }
+    
   # check that the expected directory structure is in place
   # for hosting input data
   file {'/grid/gridstore2/cath/data/current':
