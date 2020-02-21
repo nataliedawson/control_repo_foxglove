@@ -23,16 +23,15 @@ class profile::agent_nodes {
  
   # check that the expected directory structures are in place
   # for the webservices jobs (with same owner/group as phoenix)
-  #file {'/grid/gridstore2/cathgrid/nr':
-  #  ensure => directory,
+  file {'/grid/gridstore2/cathgrid/nr':
+    ensure => directory,
     #owner => 'cathgrid',
     #group => 'users',
-  #}
-  
+  } ->  
   each($nr_filenames) |$nr_filename| {
     file { "/grid/gridstore2/cathgrid/nr/${nr_filename}":
       ensure => link,
-      target => '/external/smb/vm/foxglove_data1/nr/${nr_filename}"',
+      target => '/external/smb/vm/foxglove_data1/nr/${nr_filename}',
     }
   } 
   
