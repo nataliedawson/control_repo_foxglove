@@ -6,11 +6,15 @@ class profile::agent_nodes {
   
   # check that the expected directory structures are in place
   # for the webservices jobs (with same owner/group as phoenix)
-  #file {'/grid/gridstore2/cathgrid/nr':
-  #  ensure => directory,
+  file {'/grid/gridstore2/cathgrid/nr':
+    ensure => directory,
     #owner => 'cathgrid',
     #group => 'users',
-  #}
+  }->
+  file {'/grid/gridstore2/cathgrid/nr/nr':
+    ensure => link,
+    target => '/external/smb/vm/foxglove_data1/nr/nr',
+  }
   
   file {'/grid/gridstore2/cathgrid/WebServices':
     ensure => directory,
@@ -31,11 +35,12 @@ class profile::agent_nodes {
   }
   
   # ensure that there are symlinks in place for the nr files
-  file {'/grid/gridstore2/cathgrid/nr/':
-    ensure => directory,
-    target => '/external/smb/vm/foxglove_data1/nr/',
-    links => manage,
-  }
+  # https://puppet.com/docs/puppet/latest/types/file.html#file-attribute-source
+  #file {'/grid/gridstore2/cathgrid/nr/':
+  #  ensure => directory,
+  #  target => '/external/smb/vm/foxglove_data1/nr/',
+  #  links => manage,
+  #}
     
   # check that the expected directory structure is in place
   # for hosting input data
