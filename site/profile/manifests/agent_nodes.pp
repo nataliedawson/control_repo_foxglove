@@ -20,21 +20,23 @@ class profile::agent_nodes {
     'nr.03.pin',
     'nr.03.psq',
   ]
-  
-  
-  each($nr_filenames) |$nr_filename| {
-        file { "/grid/gridstore2/cathgrid/nr/${cath_tools_filename}":
-            ensure => link,
-            target => '/external/smb/vm/foxglove_data1/nr/{cath_tools_filename}"',
-        }
-  
+ 
   # check that the expected directory structures are in place
   # for the webservices jobs (with same owner/group as phoenix)
   file {'/grid/gridstore2/cathgrid/nr':
     ensure => directory,
     #owner => 'cathgrid',
     #group => 'users',
-  }#->
+  }
+  
+  each($nr_filenames) |$nr_filename| {
+    file { "/grid/gridstore2/cathgrid/nr/${cath_tools_filename}":
+      ensure => link,
+      target => '/external/smb/vm/foxglove_data1/nr/{cath_tools_filename}"',
+    }
+  } 
+  
+  #->
   #file {'/grid/gridstore2/cathgrid/nr/nr':
   #  ensure => link,
   #  target => '/external/smb/vm/foxglove_data1/nr/nr',
