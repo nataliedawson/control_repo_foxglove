@@ -30,7 +30,7 @@ class profile::agent_nodes {
   #}
   
   each($nr_filenames) |$nr_filename| {
-    file { "/grid/gridstore2/cathgrid/nr/${cath_tools_filename}":
+    file { "/grid/gridstore2/cathgrid/nr/${nr_filename}":
       ensure => link,
       target => '/external/smb/vm/foxglove_data1/nr/{cath_tools_filename}"',
     }
