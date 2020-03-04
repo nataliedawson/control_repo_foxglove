@@ -33,36 +33,14 @@ class orengoapps::install {
     $sam_dir = 'sam'
     $prc_dir = 'prc'
     $hmmcalibrate_filename = 'hmmcalibrate'
-
-
-    # clustalw2
-    file { '/usr/bin/clustalw2':
-        source => "puppet:///modules/orengoapps/${clustalw2_filename}",
-        ensure => 'file',
-        owner => 'root',
-        group => 'root',
-        mode => '0755',
-    }
  
     # profit
-    file { '/usr/bin/profit':
+    file { '/usr/local/bin/profit':
         source => "puppet:///modules/orengoapps/${profit_filename}",
         ensure => 'file',
         owner => 'root',
         group => 'root',
         mode => '0755',
-    }
-
-    # mafft
-    file { "/tmp/${mafft_rpm_filename}":
-        source => "puppet:///modules/orengoapps/${mafft_rpm_filename}",
-        ensure => 'file',
-    }
-    ->
-    exec { 'install-mafft':
-        command => "rpm -Uvh /tmp/${mafft_rpm_filename}",
-        path => '/bin:/usr/bin',
-        creates => '/bin/mafft',
     }
 
     # blast
@@ -81,39 +59,8 @@ class orengoapps::install {
     ->
     exec { 'install-ncbi':
         command => "rpm -Uvh /tmp/${ncbi_rpm_filename}",
-        path => '/bin:/usr/bin',
-        creates => '/bin/blastp',
-    }
-
-    
-    # hhsuite
-    file { "/usr/share/hhsuite":
-        ensure => "directory",
-        owner => "root",
-    }->
-    file { "/usr/share/hhsuite/data":
-        ensure => "directory",
-        source => "puppet:///modules/orengoapps/${hhsuite_dir}/data",
-        recurse => true,
-        owner => "root",
-    }->
-    file { "/usr/bin":
-        source => "puppet:///modules/orengoapps/${hhsuite_dir}/bin",
-        ensure => 'directory',
-        recurse => true,
-        owner => 'root',
-        purge => false,
-    }
-
-    # cath-tools
-    each($cath_tools_filenames) |$cath_tools_filename| {
-        file { "/usr/bin/${cath_tools_filename}":
-            ensure => "present",
-            source => "puppet:///modules/orengoapps/${cath_tools_dirname}/${cath_tools_filename}.${cath_tools_suffix}",
-            owner => 'root',
-            group => 'root',
-            mode => '0755',
-        }
+        path => '/usr/local/bin',
+        creates => '/usr/local/bin/blastp',
     }
     
     # sam
