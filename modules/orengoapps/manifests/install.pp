@@ -59,7 +59,7 @@ class orengoapps::install {
     ->
     exec { 'install-ncbi':
         command => "rpm -Uvh /tmp/${ncbi_rpm_filename}",
-        path => '/usr/local/bin',
+        path => '/bin:/usr/bin',
         creates => '/usr/local/bin/blastp',
     }
     
