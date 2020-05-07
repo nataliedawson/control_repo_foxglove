@@ -14,6 +14,7 @@ class orengoapps::install {
     # move to global config?
 
     $mafft_rpm_filename = 'mafft-7.427-gcc_fc6.x86_64.rpm'
+    $ncbi_filename = 'ncbi-blast-2.9.0+-1.x86_64'
     $ncbi_rpm_filename = 'ncbi-blast-2.9.0+-1.x86_64.rpm'
     $ccp4_rpm_filename = ''
     $hhsuite_dir = 'hhsuite-3.2.0-SSE2-Linux'
@@ -59,6 +60,7 @@ class orengoapps::install {
     ->
     exec { 'install-ncbi':
         command => "rpm -Uvh /tmp/${ncbi_rpm_filename}",
+        unless => "rpm -qa | grep ${ncbi_filename}",
         path => '/bin:/usr/bin',
         creates => '/usr/local/bin/blastp',
     }
