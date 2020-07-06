@@ -120,6 +120,12 @@ class profile::agent_nodes {
    
   file {'/grid/gridstore2/cathgrid/WebServices':
     ensure => directory,
+    #owner => 'cathgrid',
+    #group => 'users',
+  }
+  
+  file {'/grid/gridstore2/cathgrid/WebServices/Sessions':
+    ensure => directory,
     owner => 'apache',
     group => 'apache',
   }
