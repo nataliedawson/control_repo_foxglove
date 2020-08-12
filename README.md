@@ -86,3 +86,25 @@ puppet agent -t
 ```
 
 * Have added in `orengoapps` module to install extra programs that will be needed
+
+* Summary of other changes that have been made to get things working:
+    * Get apache service (i.e. httpd) up and running
+    * Ensure that foxglove has access to its own CGI scripts
+    
+    ```
+    # as root@foxglove
+    $ cd /var/www/cgi-bin
+    $ ln -s /usr/local/svn/source/webservices/trunk/cgiscripts trunk
+
+    # reload httpd
+    $ systemctl reload httpd
+    ```
+    
+    * Modify perl path in `/var/www/cgi-bin/trunk/CathScan.cgi` so that it uses the correct version of perl
+    * Chown directories to apache:apache where needed
+    * Change SELinux settings for directories so that apache user has permission to write to them
+    * Point to correct qsub executable path: `/opt/gridengine/bin/lx-amd64/qsub`
+    * Ensure project name 'cath_update' exists
+    * Remove priority flag (-p) from qsub commands (currently automatically included, and apache user does not have authentication to permit postive increments of -p values, can only decrease priority).
+    
+    
