@@ -101,6 +101,7 @@ puppet agent -t
     ```
     
     * Modify perl path in `/var/www/cgi-bin/trunk/CathScan.cgi` so that it uses the correct version of perl
+    * Modify sge_conf settings in qconf so that min_uid, min_gid is 0, as on phoenix
     * Chown directories to apache:apache where needed
     * Change SELinux settings for directories so that apache user has permission to write to them
     * Point to correct qsub executable path: `/opt/gridengine/bin/lx-amd64/qsub`
