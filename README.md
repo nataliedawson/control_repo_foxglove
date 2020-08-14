@@ -101,11 +101,45 @@ puppet agent -t
     ```
     
     * Modify perl path in `/var/www/cgi-bin/trunk/CathScan.cgi` so that it uses the correct version of perl
+    
+    ```
+    # i.e.
+    /export/software/perlbrew/perls/perl-5.12.5/bin/perl
+    ```
+    
     * Modify sge_conf settings in qconf so that min_uid, min_gid is 0, as on phoenix
-    * Chown directories to apache:apache where needed
+    * Chown directories to apache:apache where needed (using puppet via github)
     * Change SELinux settings for directories so that apache user has permission to write to them
     * Point to correct qsub executable path: `/opt/gridengine/bin/lx-amd64/qsub`
+    
+    ```
+    # this is what $PATH now looks like:
+    [ucbtnld@foxglove ~]$ echo $PATH
+    /opt/puppetlabs/puppet/bin:/home/ucbtnld/.local/bin:/home/ucbtnld/bin:/opt/gridengine/bin:/opt/gridengine/bin/lx-amd64:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin
+    ```
+    
     * Ensure project name 'cath_update' exists
+    
+    ```
+    # I've used the settings as on phoenix:
+    [cathgrid@phoenix ~]$ qconf -sprj cath_update
+    name cath_update
+    oticket 0
+    fshare 150
+    acl NONE
+    xacl NONE
+    ```
+    
     * Remove priority flag (-p) from qsub commands (currently automatically included, and apache user does not have authentication to permit postive increments of -p values, can only decrease priority).
+    
+        * For now have been submitting qsub commands manually and removed priority flag (-p) from qsub string.
+        
+        ```
+        # apache@foxglove
+        # run qsub without priority (-p) flag
+        bash-4.2$ qsub -P cath_update -v PATH,PERL5LIB,CATHSCANCODE,CATH_VERSION -j y -o /grid/gridstore2/cathgrid/WebServicesTemp/8624/SID9594804131338624/SID9594804131338624.1.$JOB_ID -N SID9594804131338624 /grid/gridstore2/cathgrid/WebServicesTemp/8624/SID9594804131338624/SID9594804131338624.1.csh
+        ```
+        
+     
     
     
