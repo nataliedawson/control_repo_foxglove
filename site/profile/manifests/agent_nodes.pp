@@ -168,6 +168,6 @@ class profile::agent_nodes {
     user    => 'ucbtnld',
     hour    => 0,
     minute  => 0,
-    weekday => *,
+    weekday => 0,
   }
 }
