@@ -161,4 +161,13 @@ class profile::agent_nodes {
   file {'/grid/gridstore2/cath/data/current':
     ensure => directory,
   }
+  
+  # ensure perl modules/scripts are updated regularly from SVN via cron
+  cron {'perl-rsync':
+    command => 'rsync -a ucbtnld@orengobuildcentos7.biochem.ucl.ac.uk:/export/software/perlbrew/ /export/software.centos7/perlbrew/',
+    user    => 'ucbtnld',
+    hour    => 0,
+    minute  => 0,
+    weekday => *,
+  }
 }
