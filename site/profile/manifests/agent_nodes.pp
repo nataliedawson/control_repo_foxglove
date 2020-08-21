@@ -1,7 +1,18 @@
 class profile::agent_nodes {
-  host {'foxglove.cs.ucl.ac.uk':
+
+  # foxglove ip address for /etc/hosts
+  host {'foxglove-ip':
+    name         => 'foxglove.cs.ucl.ac.uk',
     ensure       => present,
     ip           => '128.16.5.105',
+    host_aliases => 'foxglove',
+  }
+  
+  # foxglove localhost ip address for /etc/hosts
+  host {'foxglove-localhost-ip':
+    name         => 'foxglove.cs.ucl.ac.uk',
+    ensure       => present,
+    ip           => '127.0.0.1',
     host_aliases => 'foxglove',
   }
   
