@@ -1,20 +1,22 @@
 class profile::agent_nodes {
 
-  # foxglove ip address for /etc/hosts
-  host {'foxglove-ip':
-    name         => 'foxglove.cs.ucl.ac.uk',
-    ensure       => present,
-    ip           => '128.16.5.105',
-    host_aliases => 'foxglove',
+  # 1. foxglove ip address for /etc/hosts
+  # 2. foxglove localhost ip address for /etc/hosts
+  host {
+    'foxglove-ip':
+      name         => 'foxglove.cs.ucl.ac.uk',
+      ensure       => present,
+      ip           => '128.16.5.105',
+      host_aliases => 'foxglove',
+    ;
+    'foxglove-localhost-ip':
+      name         => 'foxglove.cs.ucl.ac.uk',
+      ensure       => present,
+      ip           => '127.0.0.1',
+      host_aliases => 'foxglove',
+    ;
   }
-  
-  # foxglove localhost ip address for /etc/hosts
-  host {'foxglove-localhost-ip':
-    name         => 'foxglove.cs.ucl.ac.uk',
-    ensure       => present,
-    ip           => '127.0.0.1',
-    host_aliases => 'foxglove',
-  }
+
   
   # nr file names
   # (for creating symlinks)
