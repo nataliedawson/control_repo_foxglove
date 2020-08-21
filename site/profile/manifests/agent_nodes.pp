@@ -9,12 +9,12 @@ class profile::agent_nodes {
       ip           => '128.16.5.105',
       host_aliases => 'foxglove',
     ;
-    'foxglove-localhost-ip':
-      name         => 'foxglove.cs.ucl.ac.uk',
-      ensure       => present,
-      ip           => '127.0.0.1',
-      host_aliases => 'foxglove',
-    ;
+    #'foxglove-localhost-ip':
+    #  name         => 'foxglove.cs.ucl.ac.uk',
+    #  ensure       => present,
+    #  ip           => '127.0.0.1',
+    #  host_aliases => 'foxglove',
+    #;
   }
 
   
